@@ -3,11 +3,38 @@ import { NextRequest, NextResponse } from "next/server";
 import { getUserByClerkId, getUsersWithAgentEnabled } from "@/db/queries";
 import { runAgent } from "@/lib/agent";
 
-export async function POST(request: NextRequest) {
+async function runCronForEligibleUsers() {
+  const results = [];
+  const eligibleUsers = await getUsersWithAgentEnabled();
+  for (const { userId } of eligibleUsers) {
+    const result = await runAgent(userId);
+    results.push({
+      userId: userId,
+      status: result.status,
+      summary: result.summary,
+    });
+  }
+  return NextResponse.json({ results, processedCount: results.length });
+}
+
+function isAuthorizedCronRequest(request: NextRequest) {
   const cronSecret = request.headers.get("authorization");
-  const isCron =
+  return (
     process.env.CRON_SECRET &&
-    cronSecret === `Bearer ${process.env.CRON_SECRET}`;
+    cronSecret === `Bearer ${process.env.CRON_SECRET}`
+  );
+}
+
+export async function GET(request: NextRequest) {
+  const isCron = isAuthorizedCronRequest(request);
+  if (!isCron) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  return runCronForEligibleUsers();
+}
+
+export async function POST(request: NextRequest) {
+  const isCron = isAuthorizedCronRequest(request);
   //2 jobs
 
   //2. auto run job - cron
@@ -36,15 +63,5 @@ export async function POST(request: NextRequest) {
   }
 
   //cron job
-  const results = [];
-  const eligibleUsers = await getUsersWithAgentEnabled();
-  for (const { userId } of eligibleUsers) {
-    const result = await runAgent(userId);
-    results.push({
-      userId: userId,
-      status: result.status,
-      summary: result.summary,
-    });
-  }
-  return NextResponse.json({ results, processedCount: results.length });
+  return runCronForEligibleUsers();
 }
