@@ -29,7 +29,7 @@ export default async function MainLayout({
 
   //isPaiduser
 
-  const isPaidUser = has({ plan: "pro_plan" });
+  const isPaidUser = has({ plan: "pro" });
 
   const navItems = [
     {

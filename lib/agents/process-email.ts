@@ -1,6 +1,7 @@
 import { CalendarEvent } from "./calendar";
 import { ParsedEmail } from "./gmail";
 import { generateText, Output } from "ai";
+import { google } from "@ai-sdk/google";
 
 import { z } from "zod";
 
@@ -88,7 +89,7 @@ export async function anaylzeWithAI(
     calendarContext = `\n\nUpcoming calendar events (next 24 hours):\n${eventsList}\n\nUse these events to inform your analysis. For example, if the email mentions a meeting that's already on the calendar, don't create a duplicate task. If someone proposes a time that conflicts with an existing event, note the conflict in the draft reply.`;
   }
   const result = await generateText({
-    model: "anthropic/claude-sonnet-4",
+    model: google("gemini-2.5-flash-lite"),
     prompt: `You are an AI assistant analyzing emails. Today's date is ${today}.
 
 Analyze the following email and extract structured information:

@@ -41,7 +41,7 @@ export default async function DashboardPage() {
   );
 
   const { has } = await auth();
-  const isPaidUser = has({ plan: "pro_plan" });
+  const isPaidUser = has({ plan: "pro" });
 
   const onboardingSteps = [
     {
