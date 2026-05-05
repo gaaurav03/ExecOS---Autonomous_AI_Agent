@@ -1,10 +1,35 @@
-# ExecOS
+# 🚀 ExecOS
 
-Autonomous email + calendar assistant built with Next.js, Clerk, PostgreSQL, Gmail API, Google Calendar API, and Gemini.
+<p align="center">
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" />
+  <img alt="Clerk" src="https://img.shields.io/badge/Auth-Clerk-6B46FF?logo=clerk&logoColor=white" />
+  <img alt="PostgreSQL" src="https://img.shields.io/badge/Database-PostgreSQL-336791?logo=postgresql&logoColor=white" />
+  <img alt="Drizzle ORM" src="https://img.shields.io/badge/ORM-Drizzle-C5F74F?logo=drizzle&logoColor=black" />
+  <img alt="Google Gemini" src="https://img.shields.io/badge/AI-Gemini-4285F4?logo=google&logoColor=white" />
+  <img alt="Vercel" src="https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel" />
+</p>
+
+<p align="center">
+  Autonomous email + calendar assistant built with Next.js, Clerk, PostgreSQL, Gmail API, Google Calendar API, and Gemini.
+</p>
 
 ExecOS processes unread emails, extracts action items, drafts replies, and creates calendar events with minimal manual work.
 
-## Highlights
+## 🔗 Quick Links
+
+- [✨ Highlights](#-highlights)
+- [🖼️ Screenshots](#️-screenshots)
+- [🧱 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [⚙️ Environment Variables](#️-environment-variables)
+- [🛠️ Local Setup](#️-local-setup)
+- [🤖 Agent Flow](#-how-agent-flow-works)
+- [🌐 API Route](#-api-route)
+- [⏰ Cron Configuration](#-cron-configuration)
+- [🚢 Deploy (Vercel)](#-deploy-vercel)
+
+## ✨ Highlights
 
 - AI email analysis with structured output
 - Auto-drafted Gmail replies
@@ -14,7 +39,7 @@ ExecOS processes unread emails, extracts action items, drafts replies, and creat
 - OAuth token encryption at rest (AES-256-GCM)
 - Manual run + cron-based run support
 
-## Screenshots
+## 🖼️ Screenshots
 
 Add your product screenshots here.
 
@@ -33,7 +58,7 @@ Add your product screenshots here.
 <img width="2170" height="1104" alt="image" src="https://github.com/user-attachments/assets/5842f5c1-23bb-4e03-97d6-788cc5d6f8cb" />
 
 
-## Tech Stack
+## 🧱 Tech Stack
 
 - Next.js 16 (App Router)
 - TypeScript
@@ -43,7 +68,7 @@ Add your product screenshots here.
 - Vercel (deployment + cron)
 - Gemini via `@ai-sdk/google`
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 app/
@@ -66,7 +91,7 @@ lib/
     process-email.ts
 ```
 
-## Environment Variables
+## ⚙️ Environment Variables
 
 Create `.env.local`:
 
@@ -97,7 +122,7 @@ GOOGLE_GENERATIVE_AI_API_KEY=
 CRON_SECRET=
 ```
 
-## Local Setup
+## 🛠️ Local Setup
 
 1. Install dependencies:
 
@@ -123,7 +148,7 @@ bun run dev
 bun run build
 ```
 
-## How Agent Flow Works
+## 🤖 How Agent Flow Works
 
 1. Fetch unread emails from Gmail
 2. Fetch upcoming calendar events
@@ -134,7 +159,7 @@ bun run build
 7. Mark processed emails as read
 8. Log full run output to monitoring
 
-## API Route
+## 🌐 API Route
 
 - `POST /api/agents/run`
   - Manual authenticated trigger from app
@@ -142,7 +167,7 @@ bun run build
 - `GET /api/agents/run`
   - Cron-authenticated execution
 
-## Cron Configuration
+## ⏰ Cron Configuration
 
 Current Vercel cron config:
 
@@ -159,7 +184,7 @@ Current Vercel cron config:
 
 Note: Vercel Hobby supports once-daily cron schedules.
 
-## Deploy (Vercel)
+## 🚢 Deploy (Vercel)
 
 1. Import repo into Vercel
 2. Add all environment variables in Vercel project settings
@@ -170,20 +195,19 @@ Note: Vercel Hobby supports once-daily cron schedules.
 curl -H "Authorization: Bearer <CRON_SECRET>" https://<your-domain>/api/agents/run
 ```
 
-## Security Notes
+## 🔒 Security Notes
 
 - Rotate any API keys/secrets if they were exposed publicly
 - Keep `.env.local` out of version control
 - Use separate secrets for auth and cron (`BETTER_AUTH_SECRET` is not a replacement for `CRON_SECRET`)
 
-## Roadmap
+## 🗺️ Roadmap
 
 - Multi-provider model fallback
 - Per-user agent schedules
 - Better deduplication for calendar event creation
 - Human-in-the-loop approval mode for drafts/events
 
-## License
+## 📄 License
 
 MIT
-
