@@ -41,7 +41,6 @@ ExecOS processes unread emails, extracts action items, drafts replies, and creat
 
 ## 🖼️ Screenshots
 
-Add your product screenshots here.
 
 ### Dashboard
 
