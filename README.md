@@ -20,15 +20,18 @@ Add your product screenshots here.
 
 ### Dashboard
 
-![Dashboard Screenshot](./public/screenshots/dashboard.png)
+<img width="2178" height="1107" alt="image" src="https://github.com/user-attachments/assets/7c071efe-d5f9-47fc-ba16-0bd88fb20ef3" />
+
 
 ### Monitoring
 
-![Monitoring Screenshot](./public/screenshots/monitoring.png)
+<img width="2166" height="1101" alt="image" src="https://github.com/user-attachments/assets/63143de6-7a6f-4a57-9969-4fd056d3db54" />
+
 
 ### Settings / Integrations
 
-![Settings Screenshot](./public/screenshots/settings.png)
+<img width="2170" height="1104" alt="image" src="https://github.com/user-attachments/assets/5842f5c1-23bb-4e03-97d6-788cc5d6f8cb" />
+
 
 ## Tech Stack
 
