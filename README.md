@@ -207,6 +207,3 @@ curl -H "Authorization: Bearer <CRON_SECRET>" https://<your-domain>/api/agents/r
 - Better deduplication for calendar event creation
 - Human-in-the-loop approval mode for drafts/events
 
-## 📄 License
-
-MIT
